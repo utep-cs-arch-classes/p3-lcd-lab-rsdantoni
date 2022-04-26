@@ -10,11 +10,11 @@ AS              = msp430-elf-gcc -mmcu=${CPU} -c
 
 all: shape_demo.elf
 
-#additional rules for files
-shape_demo.elf: ${COMMON_OBJECTS} shape_demo.o
+#additional rules for
+main.elf: ${COMMON_OBJECTS} main.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd 
 
-load: shape_demo.elf
+load: main.elf
 	msp430loader.sh $^
 
 clean:
