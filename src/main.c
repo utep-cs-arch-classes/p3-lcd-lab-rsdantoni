@@ -10,9 +10,13 @@ void main()
 {
   configureClocks();
   lcd_init();
-
   // clear the screen in case something is already on there
   clearScreen(COLOR_WHITE);
+  
+  init_shapes();
+  
+  enableWDTInterrupts();
 
-  draw_turtle(screenWidth/2, screenHeight/2);
+   or_sr(0x18);	/**< CPU off , GIE on*/
+  
 }
