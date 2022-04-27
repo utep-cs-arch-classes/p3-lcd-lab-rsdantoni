@@ -9,7 +9,7 @@ void __interrupt_vec(WDT_VECTOR) WDT(){
   second_count++;
 
   if (second_count >= second_limit) {
-    move_turtle();
+    move_shapes();
     second_count = 0;
   }
 } 

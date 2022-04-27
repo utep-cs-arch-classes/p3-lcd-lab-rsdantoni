@@ -4,6 +4,8 @@
 
 int unit_height = 5, unit_width = 5;
 turtle turt;
+static int turt_vel_x = 5;
+static int turt_vel_y = 0;
 
 void draw_right_turtle(int x, int y){
    
@@ -43,6 +45,10 @@ void draw_right_turtle(int x, int y){
   
 }
 
+void move_shapes(){
+    move_turtle(&turt);
+}
+
 void init_shapes(){
     turt.turt_row = screenHeight / 2;
     turt.turt_col = screenWidth / 2;
@@ -50,17 +56,17 @@ void init_shapes(){
     turt.old_turt_col = screenHeight / 2;
 }
 
-void move_turtle(turtle *to_draw, int x_vel, int y_vel){
+void move_turtle(turtle *to_draw){
     
-    if(x_vel > 0){
+    if(turt_vel_x > 0){
         draw_right_turtle(to_draw->turt_row, to_draw->turt_col);
     }
 
     to_draw-> old_turt_row = to_draw->turt_row;
     to_draw->old_turt_col = to_draw->turt_col;
 
-    to_draw->turt_row += y_vel;
-    to_draw->turt_col += x_vel;
+    to_draw->turt_row += turt_vel_x;
+    to_draw->turt_col += turt_vel_y;
     
     if( (to_draw->turt_col + 4) >= screenWidth ){
         to_draw->turt_col = 4;
