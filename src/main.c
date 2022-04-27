@@ -14,5 +14,5 @@ void main()
   // clear the screen in case something is already on there
   clearScreen(COLOR_WHITE);
 
-  draw_turtle();
+  draw_turtle(screenWidth/2, screenHeight/2);
 }
