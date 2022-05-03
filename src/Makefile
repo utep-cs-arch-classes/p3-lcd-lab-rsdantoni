@@ -11,7 +11,7 @@ AS              = msp430-elf-gcc -mmcu=${CPU} -c
 all: shape_demo.elf
 
 #additional rules for
-main.elf: ${COMMON_OBJECTS} main.o
+main.elf: ${COMMON_OBJECTS} main.o wdtInterruptHandler.c
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd 
 
 load: main.elf
