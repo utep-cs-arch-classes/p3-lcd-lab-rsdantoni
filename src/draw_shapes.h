@@ -1,5 +1,6 @@
 #ifndef _DRAW_SHAPES_H_
 #define _DRAW_SHAPES_H_
+#include <stdbool.h>
 
 typedef struct turtle_st {
   int turt_row;
@@ -10,7 +11,7 @@ typedef struct turtle_st {
 
 void move_shapes();
 
-void draw_right_turtle(int x, int y);
+void draw_right_turtle(int x, int y, bool erase);
 
 void move_turtle(turtle *to_draw);
 
