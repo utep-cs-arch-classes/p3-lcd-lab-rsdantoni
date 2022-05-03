@@ -12,7 +12,7 @@ void move_shapes();
 
 void draw_right_turtle(int x, int y);
 
-void move_turtle(turtle *to_draw, int x_vel, int y_vel);
+void move_turtle(turtle *to_draw);
 
 void init_shapes();
 
