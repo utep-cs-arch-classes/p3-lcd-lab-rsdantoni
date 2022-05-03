@@ -1,5 +1,5 @@
 # makfile configuration
-COMMON_OBJECTS		= draw_shapes.o
+COMMON_OBJECTS		= draw_shapes.o wdtInterruptHandler.o
 CPU             	= msp430g2553
 CFLAGS          	= -mmcu=${CPU} -Os -I../h
 LDFLAGS		= -L../lib -L/opt/ti/msp430_gcc/include/ 
@@ -11,7 +11,7 @@ AS              = msp430-elf-gcc -mmcu=${CPU} -c
 all: shape_demo.elf
 
 #additional rules for
-main.elf: ${COMMON_OBJECTS} main.o wdtInterruptHandler.c
+main.elf: ${COMMON_OBJECTS} main.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd 
 
 load: main.elf
