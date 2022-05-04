@@ -1,4 +1,6 @@
 #include <msp430.h>
+#include "lcdutils.h"
+#include "lcddraw.h"
 #include "switches.h"
 
 char switch1_state, switch2_state, switch3_state, switch4_state;
@@ -16,7 +18,7 @@ switch_p2_init(void)
 {  
   P2REN |=  P2_SWITCHES;		// enables resistors for switches
   P2IE  |=  P2_SWITCHES;		// enable interrupts from switches
-  //P2OUT |=  SWITCHES;		// turn on switches so we can read them
+  P2OUT |=  P2_SWITCHES;		// turn on switches so we can read them
   P2DIR &= ~P2_SWITCHES;	 	// set switch pins to input
   switch_update_interrupt_sense();
 }
