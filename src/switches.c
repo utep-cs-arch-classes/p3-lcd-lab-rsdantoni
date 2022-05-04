@@ -1,7 +1,7 @@
 #include <msp430.h>
 #include "switches.h"
 
-char switch1_state, switch2_state, switch3_state, switch4_state
+char switch1_state, switch2_state, switch3_state, switch4_state;
 
 static char switch_update_interrupt_sense(void) {
   char p2val = P2IN;
@@ -25,8 +25,8 @@ void
 check_p2_switches(void)
 {
   char p2val = switch_update_interrupt_sense();
-  switch1_state = (p2val & SW1) ? 0 : 1;
-  switch2_state = (p2val & SW2) ? 0 : 1;
-  switch3_state = (p2val & SW3) ? 0 : 1;
-  switch4_state = (p2val & SW4) ? 0 : 1;
+  switch1_state = (p2val & S1) ? 0 : 1;
+  switch2_state = (p2val & S2) ? 0 : 1;
+  switch3_state = (p2val & S3) ? 0 : 1;
+  switch4_state = (p2val & S4) ? 0 : 1;
 }
