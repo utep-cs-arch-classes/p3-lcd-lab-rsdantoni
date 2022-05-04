@@ -6,9 +6,13 @@
 
 const int unit_height = 5, unit_width = 5;
 int turtle_x = screenHeight/2, turtle_y = screenWidth/2;
+int donut_x = 10, donut_y = 10;
+
 turtle turt;
-int turt_vel_x = 0;
-int turt_vel_y = 0;
+donut don;
+
+int turt_vel_x = 0, turt_vel_y = 0;
+int donut_vel_x = 5, donut_vel_y = 5;
 
 void draw_right_turtle(int turtle_x, int turtle_y, bool erase){
    
@@ -67,6 +71,11 @@ void init_shapes(){
     turt.turt_col = turtle_y;
     turt.old_turt_row = turtle_x;
     turt.old_turt_col = turtle_y;
+
+    don.donut_row = donut_x;
+    don.donut_col = donut_y;
+    don.old_donut_row = donut_x;
+    don.old_donut_col = donut_y;
 }
 
 void move_turtle(turtle *to_draw){
@@ -107,7 +116,37 @@ void move_turtle(turtle *to_draw){
     }
 }
 
-void drawDonut(int x_coord, int y_coord){
+void moveDonut(donut *to_draw){
+   drawDonut(to_draw->old_donut_row, to_draw->old_donut_col, true);
+   drawDonut(to_draw->donut_row, to_draw->donut_col, false);
+
+   to_draw->old_donut_row = to_draw->donut_row;
+   to_draw->old_donut_col = to_draw->donut_col;
+
+   to_draw->donut_row += donut_vel_x;
+   to_draw->donut_col += donut_vel_y;
+
+   if (to_draw->donut_row >= screenHeight || to_draw->donut_row <= 0){
+     donut_vel_y *= -1;
+   }
+
+   if (to_draw->donut_col >= screenWidth || to_draw->donut_col <= 0){
+     donut_vel_x *= -1;
+   }
+}
+
+void drawDonut(int x_coord, int y_coord, bool erase){
+  
+  u_int frosting_color, bread_color;
+
+  if(erase){
+    frosting_color = COLOR_WHITE;
+    bread_color = COLOR_WHITE;
+  } else {
+    frosting_color = COLOR_PINK;
+    bread_color = COLOR_TAN;
+  }
+  
   draw_circle(x_coord, y_coord, 20, COLOR_TAN);
   draw_circle(x_coord, y_coord, 18, COLOR_PINK);
   draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
