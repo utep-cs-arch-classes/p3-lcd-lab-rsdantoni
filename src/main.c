@@ -17,8 +17,6 @@ void main(){
   //or_sr(0x08);
   
   clearScreen(COLOR_WHITE);
-  turtle_x = *turtle_pos_x;
-  turtle_y = *turtle_pos_y;
   init_shapes();
   or_sr(0x18);
 }
