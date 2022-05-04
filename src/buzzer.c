@@ -1,5 +1,3 @@
-31 lines (23 sloc)  684 Bytes
-  
 #include <msp430.h>
 #include "libTimer.h"
 #include "buzzer.h"
