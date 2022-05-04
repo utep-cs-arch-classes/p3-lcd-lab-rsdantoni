@@ -17,10 +17,12 @@ void move_turtle(turtle *to_draw);
 
 void init_shapes();
 
-drawDonut(int x_coord, int y_coord);
+void drawDonut(int x_coord, int y_coord);
 
-drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
+void drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
 
-drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color);
+void drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color);
+
+void draw_circle(int x_coord, int y_coord, int r, u_int color);
 
 #endif // _DRAW_SHAPES_H_

@@ -59,6 +59,7 @@ void draw_right_turtle(int turtle_x, int turtle_y, bool erase){
 
 void move_shapes(){
   move_turtle(&turt);
+  drawDonut(50,50);
 }
 
 void init_shapes(){
@@ -106,13 +107,14 @@ void move_turtle(turtle *to_draw){
     }
 }
 
-drawDonut(int x_coord, int y_coord){
-  draw_circle(x_coord, y_coord, 10, COLOR_TAN);
+void drawDonut(int x_coord, int y_coord){
+  draw_circle(x_coord, y_coord, 20, COLOR_TAN);
+  draw_circle(x_coord, y_coord, 18, COLOR_PINK);
+  draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
 }
 
 
-drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR)
-{
+void drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR) {
   u_int length = x_end - x_start;
   // set the draw area from the start of the line to the end
   // height is 1 since its a line
@@ -123,8 +125,7 @@ drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR)
   
 }
 
-void
-drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color {
+void drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color) {
   // bottom
   drawHorizontalLine(x_coord - x_point, x_coord + x_point, y_coord + y_point, color);
   // top
@@ -135,8 +136,7 @@ drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int colo
 					  
 }
 
-void
-draw_circle(int x_coord, int y_coord, int r, u_int color) {
+void draw_circle(int x_coord, int y_coord, int r, u_int color) {
   int x_point = 0;
   int y_point = r;
   int decision = 3 - (2 * r);
@@ -157,3 +157,4 @@ draw_circle(int x_coord, int y_coord, int r, u_int color) {
     }
     drawLines(x_coord, y_coord, x_point, y_point, color);
   }
+}
