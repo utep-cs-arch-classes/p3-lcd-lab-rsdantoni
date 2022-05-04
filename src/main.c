@@ -3,20 +3,22 @@
 #include "lcdutils.h"
 #include "lcddraw.h"
 #include "draw_shapes.h"
+#include "switches.h"
 
 // WARNING: LCD DISPLAY USES P1.0.  Do not touch!!! 
 
-void main()
-{
+void main(){
+  
   configureClocks();
+  switch_p2_init();
   lcd_init();
-  // clear the screen in case something is already on there
-  clearScreen(COLOR_WHITE);
-  
-  init_shapes();
-  
-  enableWDTInterrupts();
 
-   or_sr(0x18);	/**< CPU off , GIE on*/
+  enableWDTInterrupts();
+  //or_sr(0x08);
   
+  clearScreen(COLOR_WHITE);
+  turtle_x = *turtle_pos_x;
+  turtle_y = *turtle_pos_y;
+  init_shapes();
+  or_sr(0x18);
 }
