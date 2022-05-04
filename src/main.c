@@ -4,7 +4,7 @@
 #include "lcddraw.h"
 #include "draw_shapes.h"
 #include "switches.h"
-
+#include "buzzer.h"
 // WARNING: LCD DISPLAY USES P1.0.  Do not touch!!! 
 
 void main(){
@@ -12,6 +12,7 @@ void main(){
   configureClocks();
   switch_p2_init();
   lcd_init();
+  buzzer_init();
 
   enableWDTInterrupts();
   //or_sr(0x08);

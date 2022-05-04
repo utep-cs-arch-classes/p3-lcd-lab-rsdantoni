@@ -4,6 +4,7 @@
 #include "lcddraw.h"
 #include "draw_shapes.h"
 #include "switches.h"
+#include "buzzer.h"
 
 void __interrupt_vec(WDT_VECTOR) WDT(){
   const  unsigned int second_limit = 50;
@@ -14,6 +15,8 @@ void __interrupt_vec(WDT_VECTOR) WDT(){
   
   if (second_count >= second_limit) {
     move_shapes();
+    buzzer_set_period(1000);
+    
     second_count = 0;
   }
 } 
