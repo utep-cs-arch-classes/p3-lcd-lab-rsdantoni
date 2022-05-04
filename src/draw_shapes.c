@@ -5,16 +5,16 @@
 #include <stdbool.h>
 
 const int unit_height = 5, unit_width = 5;
-int turtle_x = screenHeight/2, turtle_y = screenWidth/2;
-int donut_x = 10, donut_y = 10;
+int turtle_x = screenWidth/2, turtle_y = screenHeight/2;
+int donut_x = 20, donut_y = 20;
 
 turtle turt;
 donut don;
 
 int turt_vel_x = 0, turt_vel_y = 0;
-int donut_vel_x = 5, donut_vel_y = 5;
+int donut_vel_x = 6, donut_vel_y = 6;
 
-void draw_right_turtle(int turtle_x, int turtle_y, bool erase){
+void draw_right_turtle(int x, int y, bool erase){
    
     u_int shell_color, flesh_color, eye_color;
 
@@ -28,42 +28,42 @@ void draw_right_turtle(int turtle_x, int turtle_y, bool erase){
       eye_color = COLOR_BLACK;
     }
     
-    int left_col = turtle_x - (6 * unit_width / 2);
-    int top_row  =  turtle_y;
+    int left_col = x - (6 * unit_width / 2);
+    int top_row  =  y;
     top_row -= (3 * unit_height / 2);
     fillRectangle(left_col, top_row, unit_width * 6, unit_height * 3, shell_color);
 
-    left_col = turtle_x - (4 * unit_width / 2); 
+    left_col = x - (4 * unit_width / 2); 
     top_row -= unit_height;
     fillRectangle(left_col, top_row, unit_width * 4, unit_height, shell_color);
 
-    left_col = turtle_x - (2 * unit_width / 2);
+    left_col = x - (2 * unit_width / 2);
     top_row -= unit_height;
     fillRectangle(left_col, top_row, 2 * unit_width, unit_height, shell_color);
 
-    left_col = turtle_x - (6 * unit_height / 2);
+    left_col = x - (6 * unit_height / 2);
     top_row += unit_height * 5;
     fillRectangle(left_col, top_row, 2 * unit_width, 2 * unit_height, flesh_color);
 
-    left_col = turtle_x - (2 * unit_width / 2);
+    left_col = x - (2 * unit_width / 2);
     fillRectangle(left_col, top_row, 2 * unit_width, unit_height, flesh_color);
 
-    left_col = turtle_x + (2 * unit_width / 2);
+    left_col = x + (2 * unit_width / 2);
     fillRectangle(left_col, top_row, 2 * unit_width, 2 * unit_height, flesh_color);
 
-    left_col = turtle_x + (6 * unit_width / 2);
+    left_col = x + (6 * unit_width / 2);
     top_row -= 4 * unit_height;
     fillRectangle(left_col, top_row, 2 * unit_width, 4 * unit_height, flesh_color);
 
-    left_col = turtle_x + (8 * unit_width / 2);
+    left_col = x + (8 * unit_width / 2);
     top_row += unit_height;
     fillRectangle(left_col, top_row, unit_width, unit_height, eye_color);
   
 }
 
 void move_shapes(){
+  moveDonut(&don);
   move_turtle(&turt);
-  drawDonut(50,50);
 }
 
 void init_shapes(){
@@ -107,12 +107,12 @@ void move_turtle(turtle *to_draw){
     to_draw->turt_row += turt_vel_x;
     to_draw->turt_col += turt_vel_y;
     
-    if( (to_draw->turt_col + 4) >= screenWidth ){
-        to_draw->turt_col = 4;
+    if( (to_draw->turt_row + 4.5) >= screenWidth ){
+        to_draw->turt_row = 5;
     }
 
-    if( (to_draw->turt_col - 4) <= 0 ){
-        to_draw->turt_col = screenWidth - 4;
+    if( (to_draw->turt_row - 4.5) <= 0 ){
+        to_draw->turt_row = screenWidth - 4.5;
     }
 }
 
@@ -126,11 +126,11 @@ void moveDonut(donut *to_draw){
    to_draw->donut_row += donut_vel_x;
    to_draw->donut_col += donut_vel_y;
 
-   if (to_draw->donut_row >= screenHeight || to_draw->donut_row <= 0){
+   if (to_draw->donut_col + 20 >= screenHeight || (to_draw->donut_col - 20) <= 0){
      donut_vel_y *= -1;
    }
 
-   if (to_draw->donut_col >= screenWidth || to_draw->donut_col <= 0){
+   if ( (to_draw->donut_row + 20) >= screenWidth || (to_draw->donut_row - 20) <= 0){
      donut_vel_x *= -1;
    }
 }
@@ -147,8 +147,8 @@ void drawDonut(int x_coord, int y_coord, bool erase){
     bread_color = COLOR_TAN;
   }
   
-  draw_circle(x_coord, y_coord, 20, COLOR_TAN);
-  draw_circle(x_coord, y_coord, 18, COLOR_PINK);
+  draw_circle(x_coord, y_coord, 20, frosting_color);
+  draw_circle(x_coord, y_coord, 18, bread_color);
   draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
 }
 

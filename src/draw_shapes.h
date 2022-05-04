@@ -24,7 +24,7 @@ void move_turtle(turtle *to_draw);
 void init_shapes();
 
 void drawDonut(int x_coord, int y_coord, bool erase);
-void moveDonut(turtle *to_draw);
+void moveDonut(donut *to_draw);
 void drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
 void drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color);
 void draw_circle(int x_coord, int y_coord, int r, u_int color);
