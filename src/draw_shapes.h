@@ -16,5 +16,4 @@ void draw_right_turtle(int x, int y, bool erase);
 void move_turtle(turtle *to_draw);
 
 void init_shapes();
-
 #endif // _DRAW_SHAPES_H_
