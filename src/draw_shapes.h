@@ -16,4 +16,11 @@ void draw_right_turtle(int x, int y, bool erase);
 void move_turtle(turtle *to_draw);
 
 void init_shapes();
+
+drawDonut(int x_coord, int y_coord);
+
+drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
+
+drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color);
+
 #endif // _DRAW_SHAPES_H_
