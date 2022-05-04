@@ -11,10 +11,16 @@ AS              = msp430-elf-gcc -mmcu=${CPU} -c
 all: shape_demo.elf
 
 #additional rules for
-main.elf: ${COMMON_OBJECTS} main.o
+main_c.elf: ${COMMON_OBJECTS} main.o buzzer_sounds_c.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd 
 
-load: main.elf
+main_s.elf: ${COMMON_OBJECTS} main.o buzzer_sounds_s.o
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd
+
+load_c: main_c.elf
+	msp430loader.sh $^
+
+load_s: main_s.elf
 	msp430loader.sh $^
 
 clean:
