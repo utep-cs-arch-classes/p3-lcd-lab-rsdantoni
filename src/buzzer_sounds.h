@@ -1,0 +1,1 @@
+int getBuzzerCycle(int note);

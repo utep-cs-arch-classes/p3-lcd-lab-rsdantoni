@@ -1,31 +1,34 @@
+#include buzzer_sounds.h
+
 int buzzerCycle = 0;
 
 int getBuzzerCycle(char note){
     
     switch(note){
-        case 'C':
+        case 0:
             buzzerCycle = 7644; //C4
             break;
-        case 'D':
+        case 1:
             buzzerCycle = 6810; //D4
             break;
-        case 'E':
+        case 2:
             buzzerCycle = 6067; //E4
             break; 
-        case 'F':
+        case 3:
             buzzerCycle = 5727;//F4
             break;
-        case 'G':
+        case 4:
             buzzerCycle = 5102; //G4
             break;
-        case 'A':
+        case 5:
             buzzerCycle = 4545; //A4 
             break;
-        case 'B': 
+        case 6: 
             buzzerCycle = 4049; //B4
             break;
-        case 'O': //C5 (o for octave)
-            buzzerCycle = 3822;
+        case 7: 
+            buzzerCycle = 3822; //C5
+            break;
     }
 
     return buzzerCycle;
