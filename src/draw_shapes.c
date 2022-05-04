@@ -105,3 +105,55 @@ void move_turtle(turtle *to_draw){
         to_draw->turt_col = screenWidth - 4;
     }
 }
+
+drawDonut(int x_coord, int y_coord){
+  draw_circle(x_coord, y_coord, 10, COLOR_TAN);
+}
+
+
+drawHorizontalLine(u_int x_start, u_int x_end, u_int y, u_int colorBGR)
+{
+  u_int length = x_end - x_start;
+  // set the draw area from the start of the line to the end
+  // height is 1 since its a line
+  lcd_setArea(x_start, y, x_end, y);
+  for (u_int i = 0; i < length; i++) {
+    lcd_writeColor(colorBGR);
+  }
+  
+}
+
+void
+drawLines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color {
+  // bottom
+  drawHorizontalLine(x_coord - x_point, x_coord + x_point, y_coord + y_point, color);
+  // top
+  drawHorizontalLine(x_coord - x_point, x_coord + x_point, y_coord - y_point, color);
+  // and the middle two
+  drawHorizontalLine(x_coord - y_point, x_coord + y_point, y_coord + x_point, color);
+  drawHorizontalLine(x_coord - y_point, x_coord + y_point, y_coord - x_point, color);
+					  
+}
+
+void
+draw_circle(int x_coord, int y_coord, int r, u_int color) {
+  int x_point = 0;
+  int y_point = r;
+  int decision = 3 - (2 * r);
+
+  drawLines(x_coord, y_coord, x_point, y_point, color);
+
+  while (y_point >= x_point) {
+    // move x over one
+    x_point++;
+
+    // check decision point
+    if (decision > 0) {
+      // move y down one
+      y_point--;
+      decision = decision + 4 * (x_point - y_point) + 10;
+    } else {
+      decision = decision + 4 * x_point + 6;
+    }
+    drawLines(x_coord, y_coord, x_point, y_point, color);
+  }
