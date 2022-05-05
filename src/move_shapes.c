@@ -5,7 +5,6 @@
 #include "switches.h"
 #include <stdbool.h>
 
-const int unit_height = 5, unit_width = 5;
 int turtle_x = screenWidth/2, turtle_y = screenHeight/2;
 int donut_x = 20, donut_y = 20;
 int barrel_x = screenWidth - 30, barrel_y = screenHeight - 30;
