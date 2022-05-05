@@ -84,19 +84,26 @@ void move_turtle(turtle *to_draw){
     
   if(switch1_state == 1){
     turt_vel_x = -5;
+    drawString5x7(screenWidth - 20, screenHeight - 20, "Left", COLOR_BLACK, COLOR_WHITE);
   }
 
   if(switch2_state == 1){
     turt_vel_y = 5;
+    drawString5x7(screenWidth - 20, screenHeight - 20, "Down", COLOR_BLACK, COLOR_WHITE);
+
   }
   
   if (switch3_state == 1){
     turt_vel_x = 5;
-  }
+     drawString5x7(screenWidth - 20, screenHeight - 20, "Right", COLOR_BLACK, COLOR_WHITE);
+
+  } 
+
 
   if(switch4_state == 1){
     turt_vel_y = -5;
-  }
+    drawString5x7(screenWidth - 20, screenHeight - 20, "Up", COLOR_BLACK, COLOR_WHITE);
+ }
 
  // if(turt_vel_x >= 0){
   draw_right_turtle(to_draw->old_turt_row, to_draw->old_turt_col, true);
