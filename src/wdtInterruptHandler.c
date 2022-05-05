@@ -15,8 +15,18 @@ void __interrupt_vec(WDT_VECTOR) WDT(){
   
   if (second_count >= second_limit) {
     move_shapes();
-    buzzer_set_period(1000);
-    
     second_count = 0;
+  }
+
+  if(switch1_state == 1){
+    buzzer_set_period(getBuzzerCycle(0));
+  }
+
+  if(switch2_state == 1){
+    buzzer_set_period(getBuzzerCycle(2));
+  }
+
+  if(switch3_state == 1){
+    buzzer_set_period(getBuzzerCycle(4));
   }
 } 
