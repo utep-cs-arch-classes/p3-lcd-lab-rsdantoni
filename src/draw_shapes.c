@@ -8,6 +8,7 @@ const int unit_height = 5, unit_width = 5;
 int turtle_x = screenWidth/2, turtle_y = screenHeight/2;
 int donut_x = 20, donut_y = 20;
 int barrel_x = screenWidth - 30, barrel_y = screenHeight - 30;
+int text_x = screenWidth - 35 , text_y = 15;
 
 turtle turt;
 donut don;
@@ -84,25 +85,24 @@ void move_turtle(turtle *to_draw){
     
   if(switch1_state == 1){
     turt_vel_x = -5;
-    drawString5x7(screenWidth - 20, screenHeight - 20, "Left", COLOR_BLACK, COLOR_WHITE);
+    drawString5x7(text_x, text_y, "Left", COLOR_BLACK, COLOR_WHITE);
   }
 
   if(switch2_state == 1){
     turt_vel_y = 5;
-    drawString5x7(screenWidth - 20, screenHeight - 20, "Down", COLOR_BLACK, COLOR_WHITE);
+    drawString5x7(text_x, text_y, "Down", COLOR_BLACK, COLOR_WHITE);
 
   }
   
   if (switch3_state == 1){
     turt_vel_x = 5;
-     drawString5x7(screenWidth - 20, screenHeight - 20, "Right", COLOR_BLACK, COLOR_WHITE);
+     drawString5x7(text_x, text_y, "Right", COLOR_BLACK, COLOR_WHITE);
 
   } 
 
-
   if(switch4_state == 1){
     turt_vel_y = -5;
-    drawString5x7(screenWidth - 20, screenHeight - 20, "Up", COLOR_BLACK, COLOR_WHITE);
+    drawString5x7(text_x, text_y, "Up", COLOR_BLACK, COLOR_WHITE);
  }
 
  // if(turt_vel_x >= 0){
