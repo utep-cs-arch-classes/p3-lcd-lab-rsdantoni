@@ -20,6 +20,7 @@ void draw_right_turtle(int x, int y, bool erase){
     eye_color = COLOR_BLACK;
   }
   
+  //Shell
   int left_col = x - (6 * unit_width / 2);
   int top_row  =  y;
   top_row -= (3 * unit_height / 2);
@@ -33,6 +34,7 @@ void draw_right_turtle(int x, int y, bool erase){
   top_row -= unit_height;
   fillRectangle(left_col, top_row, 2 * unit_width, unit_height, shell_color);
 
+  //Legs/Underside
   left_col = x - (6 * unit_height / 2);
   top_row += unit_height * 5;
   fillRectangle(left_col, top_row, 2 * unit_width, 2 * unit_height, flesh_color);
@@ -43,10 +45,12 @@ void draw_right_turtle(int x, int y, bool erase){
   left_col = x + (2 * unit_width / 2);
   fillRectangle(left_col, top_row, 2 * unit_width, 2 * unit_height, flesh_color);
 
+  //Head
   left_col = x + (6 * unit_width / 2);
   top_row -= 4 * unit_height;
   fillRectangle(left_col, top_row, 2 * unit_width, 4 * unit_height, flesh_color);
 
+  //Eye
   left_col = x + (8 * unit_width / 2);
   top_row += unit_height;
   fillRectangle(left_col, top_row, unit_width, unit_height, eye_color);
@@ -64,10 +68,11 @@ void draw_donut(int x_coord, int y_coord, bool erase){
     frosting_color = COLOR_PINK;
     bread_color = COLOR_TAN;
   }
-  
-  draw_circle(x_coord, y_coord, 20, bread_color);
-  draw_circle(x_coord, y_coord, 18, frosting_color);
-  draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
+
+  int r = 4 * unit_width;
+  draw_circle(x_coord, y_coord, r, bread_color);
+  draw_circle(x_coord, y_coord, r - 2, frosting_color);
+  draw_circle(x_coord, y_coord, r/2 , COLOR_WHITE);
 }
 
 void draw_barrel(int x, int y){
@@ -78,7 +83,7 @@ void draw_barrel(int x, int y){
   int left_col = x - (4 * unit_height / 2);
 
   fillRectangle(left_col, top_row, 4 * unit_width, 7 * unit_height, barrel_color);
-  draw_circle(x, y, 5, warning_color);
+  draw_circle(x, y, unit_width, warning_color);
 }
 
 
