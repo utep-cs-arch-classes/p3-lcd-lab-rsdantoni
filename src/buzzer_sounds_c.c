@@ -1,8 +1,8 @@
-#include buzzer_sounds.h
+#include "buzzer_sounds_c.h"
 
 int buzzerCycle = 0;
 
-int getBuzzerCycle(char note){
+int getBuzzerCycle(int note){
     
     switch(note){
         case 0:

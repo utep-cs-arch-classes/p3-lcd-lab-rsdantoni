@@ -40,6 +40,6 @@ case6:
     jmp end_case
 case7:
     mov #3822, buzzerCycle
-end_case
+end_case:	
     mov &buzzerCycle, r12
     pop r0
