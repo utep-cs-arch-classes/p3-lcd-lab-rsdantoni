@@ -18,10 +18,10 @@ typedef struct donut_st {
 
 typedef struct barrel_st {
   int barrel_row;
-  int_barrel_col;
+  int barrel_col;
   int old_barrel_row;
   int old_barrel_col;
-}
+} barrel;
 
 
 void init_shapes();

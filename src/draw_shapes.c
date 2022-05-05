@@ -28,6 +28,7 @@ void init_shapes(){
 
 void move_shapes(){
   move_donut(&don);
+  draw_barrel(50,50,false);
   move_turtle(&turt);
 }
 
@@ -157,17 +158,17 @@ void draw_barrel(int x, int y, bool erase){
 
   if(erase){
     barrel_color = COLOR_WHITE;
-    warning_color = COLOR_YELLOW;
+    warning_color = COLOR_WHITE;
   }else{
     barrel_color = COLOR_BLACK;
-    barrel_color = COLOR_YELLOW;
+    warning_color = COLOR_YELLOW;
   }
 
-  int top_row = 7 * unit_height / 2;
-  int left_col = 4 * unit_height / 2;
+  int top_row = x - (7 * unit_height / 2);
+  int left_col = y - (4 * unit_height / 2);
 
-  fillRectangle(left_col, top_row, 7 * unit_width, 4 * unit_height, barrel_color);
-  fillCircle(x, y, 1, warning_color);
+  fillRectangle(left_col, top_row, 4 * unit_width, 7 * unit_height, barrel_color);
+  draw_circle(x, y, 5, warning_color);
 }
 
 
