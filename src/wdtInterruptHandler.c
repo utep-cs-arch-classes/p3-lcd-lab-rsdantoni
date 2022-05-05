@@ -11,22 +11,11 @@ void __interrupt_vec(WDT_VECTOR) WDT(){
   static unsigned int second_count = 0;
 
   check_p2_switches();
+  buzzer_switch_handler();
   second_count++;
   
   if (second_count >= second_limit) {
     move_shapes();
     second_count = 0;
-  }
-
-  if(switch1_state == 1){
-    buzzer_set_period(getBuzzerCycle(0));
-  }
-
-  if(switch2_state == 1){
-    buzzer_set_period(getBuzzerCycle(2));
-  }
-
-  if(switch3_state == 1){
-    buzzer_set_period(getBuzzerCycle(4));
   }
 } 
