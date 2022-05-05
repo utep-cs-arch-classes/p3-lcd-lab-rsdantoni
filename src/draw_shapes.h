@@ -2,30 +2,8 @@
 #define _DRAW_SHAPES_H_
 #include <stdbool.h>
 
-typedef struct turtle_st {
-  int turt_row;
-  int turt_col;
-  int old_turt_row;
-  int old_turt_col;
-} turtle;
-
-typedef struct donut_st {
-  int donut_row;
-  int donut_col;
-  int old_donut_row;
-  int old_donut_col;
-} donut;
-
-void init_shapes();
-void move_shapes();
-
 void draw_right_turtle(int x, int y, bool erase);
-void move_turtle(turtle *to_draw);
-
-
 void draw_donut(int x_coord, int y_coord, bool erase);
-void move_donut(donut *to_draw);
-
 void draw_barrel(int x, int y);
 
 void draw_horizontal_line(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
