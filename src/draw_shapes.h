@@ -16,14 +16,6 @@ typedef struct donut_st {
   int old_donut_col;
 } donut;
 
-typedef struct barrel_st {
-  int barrel_row;
-  int barrel_col;
-  int old_barrel_row;
-  int old_barrel_col;
-} barrel;
-
-
 void init_shapes();
 void move_shapes();
 
@@ -34,8 +26,7 @@ void move_turtle(turtle *to_draw);
 void draw_donut(int x_coord, int y_coord, bool erase);
 void move_donut(donut *to_draw);
 
-void draw_barrel(int x, int y, bool erase);
-void move_barrel(barrel *to_draw);
+void draw_barrel(int x, int y);
 
 void draw_horizontal_line(u_int x_start, u_int x_end, u_int y, u_int colorBGR);
 void draw_lines(u_int x_coord, u_int y_coord, u_int x_point, u_int y_point, u_int color);

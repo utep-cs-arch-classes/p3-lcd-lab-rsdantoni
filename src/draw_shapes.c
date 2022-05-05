@@ -7,15 +7,13 @@
 const int unit_height = 5, unit_width = 5;
 int turtle_x = screenWidth/2, turtle_y = screenHeight/2;
 int donut_x = 20, donut_y = 20;
-int barrel_x = screenWidth - 20 ; barrel_y  = screenHeight - 20;
+int barrel_x = screenWidth - 30, barrel_y = screenHeight - 30;
 
 turtle turt;
 donut don;
-barrel bar;
 
 int turt_vel_x = 0, turt_vel_y = 0;
 int donut_vel_x = 6, donut_vel_y = 6;
-int barrel_vel_x = 6, barrel_vel_y = 6;
 
 void init_shapes(){
   turt.turt_row = turtle_x;
@@ -27,17 +25,11 @@ void init_shapes(){
   don.donut_col = donut_y;
   don.old_donut_row = donut_x;
   don.old_donut_col = donut_y;
-
-  bar.barrel_row = barrel_x;
-  bar.barrel_col = barrel_y;
-  bar.old_barrel_row = barrel_x;
-  bar.old_barrel_col = barrel_y;
-
 }
 
 void move_shapes(){
+  draw_barrel(barrel_x, barrel_y);
   move_donut(&don);
-  draw_barrel(&bar);
   move_turtle(&turt);
 }
 
@@ -162,42 +154,12 @@ void draw_donut(int x_coord, int y_coord, bool erase){
   draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
 }
 
+void draw_barrel(int x, int y){
+  u_int barrel_color = COLOR_BLACK;
+  u_int warning_color = COLOR_YELLOW;
 
-void move_barel(barrel *to_draw){
-  draw_barrel(to_draw->old_barrel_row, to_draw->old_barrel_col, true);
-  draw_barrel(to_draw->barrel_row, to_draw->barrel_col, false);
-
-  to_draw->old_barrel_row = to_draw->barrel_row;
-  to_draw->old_barrel_col = to_draw->barrel_col;
-
-  to_draw->barrel_row += barrel_vel_x;
-  to_draw->barrel_col += barrelt_vel_y;
-
-  if(to_draw->barrel_row + (7 * unit_height / 2) >= screenHeight 
-      || to_draw->barrel_row - (7 * unit_height / 2) <= 0) {
-    barrel_vel_y *= -1;
-  }
-
-  if(to_draw->barrel_col + (4 * unit_width / 2) >= screenHeight
-      || to_draw->barrel_col - (4* unit_width / 2) <= 0){
-
-    barrel_vel_x *= 1;
-  }
-}
-
-void draw_barrel(int x, int y, bool erase){
-  u_int barrel_color, warning_color;
-
-  if(erase){
-    barrel_color = COLOR_WHITE;
-    warning_color = COLOR_WHITE;
-  }else{
-    barrel_color = COLOR_BLACK;
-    warning_color = COLOR_YELLOW;
-  }
-
-  int top_row = x - (7 * unit_height / 2);
-  int left_col = y - (4 * unit_height / 2);
+  int top_row = y - (7 * unit_height / 2);
+  int left_col = x - (4 * unit_height / 2);
 
   fillRectangle(left_col, top_row, 4 * unit_width, 7 * unit_height, barrel_color);
   draw_circle(x, y, 5, warning_color);
