@@ -147,8 +147,8 @@ void drawDonut(int x_coord, int y_coord, bool erase){
     bread_color = COLOR_TAN;
   }
   
-  draw_circle(x_coord, y_coord, 20, frosting_color);
-  draw_circle(x_coord, y_coord, 18, bread_color);
+  draw_circle(x_coord, y_coord, 20, bread_color);
+  draw_circle(x_coord, y_coord, 18, frosting_color);
   draw_circle(x_coord, y_coord, 10, COLOR_WHITE);
 }
 
