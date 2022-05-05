@@ -2,8 +2,9 @@
 buzzerCycle: .word 0
     .text
     .balign
-    .global get_buzzer_cycle
-jmp_table:   .word case0
+    .global getBuzzerCycle
+jmp_table:
+	    .word case0
             .word case1
             .word case2
             .word case3
@@ -12,8 +13,7 @@ jmp_table:   .word case0
             .word case6
             .word case7
 
-get_buzzer_cycle:
-    mov &buzzerCycle, r12
+getBuzzerCycle:
     add r12, r12
     mov jmp_table(r12), r0
 
